@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, user-scalable=no,initial-scale=1, minimum-scale=1">
+    <title>TouchDEMO</title>
+</head>
+<style>
+    html,
+    body {
+        height: 100%;
+        overflow: hidden;
+    }
+
+    .box {
+        margin-top: 20px;
+        width: 100%;
+        height: 200px;
+        background: #3b98e0;
+    }
+
+    .textstart {
+        margin-top: 20px;
+        width: 100%;
+        background: #41f890;
+        height: 120px;
+        font-size: 20px;
+    }
+
+    .textend {
+        margin-top: 20px;
+        width: 100%;
+        background: #fd1890;
+        height: 120px;
+        font-size: 20px;
+    }
+</style>
+
+<body>
+    <div class="box"></div>
+    <div class="textstart"></div>
+    <div class="textend"></div>
+</body>
+<script>
+    var body = document.body
+    var box = document.querySelector('.box')
+    var textstart = document.querySelector('.textstart')
+    var textend = document.querySelector('.textend')
+    var json = function (o) {
+        return JSON.stringify(o)
+    }
+    box.addEventListener('touchstart', function (e) {
+        e.preventDefault()
+    }, false)
+
+    box.addEventListener('touchmove', function (e) {
+        e.preventDefault()
+    }, false)
+
+    box.addEventListener('touchend', function (e) {
+        e.preventDefault()
+    }, false)
+
+    body.addEventListener('touchstart', function (e) {
+        textstart.innerHTML = 'touchstart' + '<br/>' + 'e.touches:' + json(e.touches) + '<br/>' +
+            'e.targetTouches:' + json(e.targetTouches) + '<br/>' + 'e.changedTouches:' + json(e.changedTouches)
+        e.preventDefault()
+
+    })
+    body.addEventListener('touchmove', function (e) {
+        e.preventDefault()
+    })
+
+    body.addEventListener('touchend', function (e) {
+        e.preventDefault()
+        textend.innerHTML = 'touchend' + '<br/>' + 'e.touches:' + json(e.touches) + '<br/>' +
+            'e.targetTouches:' + json(e.targetTouches) + '<br/>' + 'e.changedTouches:' + json(e.changedTouches)
+    })
+</script>
+
+</html>
